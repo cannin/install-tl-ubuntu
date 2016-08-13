@@ -76,6 +76,7 @@ ONLY_APT_DPKG=0
 NO_APT_DPKG=0
 LOG_DIR="${MAINDIR}"
 PRETEST=0
+MOUNT_ISO_DIR=/media
 
 while true
 do
@@ -494,7 +495,7 @@ if [ -z "${TLREPO:-}" -a -z "${ISO_FILE}" ]; then
 fi
 
 if [ -n "${ISO_FILE}" ]; then
-    MOUNT_ISO_DIR="$(mktemp -d --tmpdir=/media)"
+    #MOUNT_ISO_DIR="$(mktemp -d --tmpdir=/media)"
     [ -d "${MOUNT_ISO_DIR}" ] || mkdir -p "${MOUNT_ISO_DIR}"
     mount -t iso9660 -o ro,loop,noauto "${ISO_FILE}" "${MOUNT_ISO_DIR}"
     if [ "$?" != "0" ]; then
